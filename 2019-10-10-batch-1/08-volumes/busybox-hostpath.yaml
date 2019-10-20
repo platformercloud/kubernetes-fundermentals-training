@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: busybox
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: busybox
+    spec:
+      containers:
+      - image: busybox
+        name: busybox
+        command:
+        - /bin/sh
+        - -c
+        - "sleep 3600;"
+        resources: 
+          requests: 
+            cpu: 10m 
+        volumeMounts:
+        - name: logs
+          mountPath: /app
+      volumes:
+      - name: logs
+        hostPath:
+         path: /var/log
+status: {}

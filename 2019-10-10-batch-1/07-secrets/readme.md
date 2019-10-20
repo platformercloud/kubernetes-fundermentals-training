@@ -1,0 +1,1 @@
+kubectl create secret generic literal-secret --from-literal name=nilesh --dry-run -o yaml > secret-literal.yaml

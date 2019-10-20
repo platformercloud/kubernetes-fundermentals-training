@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: busybox
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: busybox
+    spec:
+      initContainers:
+      - image: busybox
+        name: init
+        command:
+        - /bin/sh
+        - -c
+        - "touch /app/hello.txt && sleep 30"
+        volumeMounts:
+        - name: init
+          mountPath: /app
+        resources: 
+          requests: 
+            cpu: 10m 
+      containers:
+      - image: busybox
+        name: busybox
+        command:
+        - /bin/sh
+        - -c
+        - "cat /app/hello.txt && sleep 3600;"
+        resources: 
+          requests: 
+            cpu: 10m 
+        volumeMounts:
+        - name: init
+          mountPath: /app
+      volumes:
+      - name: init
+        emptyDir: {}
+status: {}
