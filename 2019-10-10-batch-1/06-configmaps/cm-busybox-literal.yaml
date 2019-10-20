@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  foo: bar-new
+  john: doe
+  country: SL
+  gender: Male
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: busybox-literal

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ghost
+  name: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ghost
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: ghost
+    spec:
+      containers:
+      - image: ghost
+        name: ghost
+        ports:
+        - containerPort: 2368
+        resources: {}
+status: {}

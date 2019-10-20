@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: busybox
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: busybox
+    spec:
+      containers:
+      - image: busybox
+        name: busybox
+        command: 
+        - /bin/sh
+        - -c
+        - "sleep 3600;"
+        env:
+        - name: MYSQL_PASS
+          value: abc123
+        - name: country
+          valueFrom:
+            configMapKeyRef:
+               key: country
+               name: busybox-literal
+        - name: foo
+          valueFrom:
+            configMapKeyRef:
+               key: foo
+               name: busybox-literal
+        envFrom:
+        - configMapRef:
+             name: busybox-envfrom
+        volumeMounts:
+        - name: configs
+          mountPath: /app
+        resources: 
+          requests:
+            cpu: 10m
+      volumes:
+      - name: configs
+        configMap:
+          name: busybox-file
+status: {}

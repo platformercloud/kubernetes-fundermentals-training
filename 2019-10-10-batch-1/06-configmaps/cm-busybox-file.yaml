@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  app.properties: |-
+    version=1.1.0
+    app=some-java-app
+    ### SOME FILE
+  java.properties: |-
+     ### sample file new new new
+     ## 
+  country: SL
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: busybox-file
