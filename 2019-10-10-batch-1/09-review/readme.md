@@ -1,5 +1,5 @@
-Create a deployment for Nextcloud https://hub.docker.com/_/nextcloud
-Open the port 80
+Create a deployment for Nextcloud https://hub.docker.com/_/nextcloud 
+container runs on port 80
 Create 2 PVCs for 1GB using GCP Persistent Disks and name them html and db
 Mount the 2 PVCs to the pods on the paths /var/www/html and /var/lib/mysql
 
@@ -8,3 +8,8 @@ Make sure the deployment only has 1 replica
 expose the deployment as a service of type loadbalancer
 
 Save up all the yamls
+
+Solution:
+
+kubectl run nextcloud --image nextcloud -o yaml --dry-run --port 80 > deployment-nextcloud.yaml
+kubectl expose deploy/nextcloud --port 80 --target-port 80 --type LoadBalancer --dry-run -o yaml > service-nextcloud.yaml
