@@ -1,0 +1,32 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  concurrencyPolicy: Allow
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      ttlSecondsAfterFinished: 10
+      template:
+        metadata:
+          creationTimestamp: null
+          labels:
+            run: busybox
+        spec:
+          containers:
+          - image: busybox
+            name: busybox
+            command: 
+            - /bin/sh
+            - -c
+            - "echo 'hello world';"
+            resources: {}
+          restartPolicy: OnFailure
+    
+  schedule: "*/2 * * * *"
+status: {}
