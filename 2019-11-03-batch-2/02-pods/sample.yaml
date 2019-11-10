@@ -1,0 +1,17 @@
+movie: avengers
+heros:
+- name: ironman
+  actor: RDJ
+- name: hulk
+  actor: MR
+languages:
+- en
+- es
+- ru
+release:
+  date: "10-10-2019"
+  country: US
+  venue:
+     add1: some add1
+     add2: some add2
+  city: LA
