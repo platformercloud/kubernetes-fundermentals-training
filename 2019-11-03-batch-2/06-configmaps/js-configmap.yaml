@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+        "host": "10.100.112.12",
+        "username": "root",
+        "password": "q123"
+    }
+  app.properties: |-
+    # you can write anything
+    # in multiple lines
+    # nobody cares
+
+
+    ### Hello World
+  country: sri lanka
+  organization: platformer
+  
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: js-config
