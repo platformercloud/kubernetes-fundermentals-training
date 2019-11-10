@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: 'added annotations'
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      run: nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: nginx
+        app: v1
+    spec:
+      containers:
+      - image: nginx:200 # induce error with adding a non existent tag
+        name: nginx
+        resources: 
+          limits:
+            cpu: 40m
+status: {}
