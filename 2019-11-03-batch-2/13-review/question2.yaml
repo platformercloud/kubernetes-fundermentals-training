@@ -23,6 +23,21 @@ spec:
         command:
         - /bin/sh
         - -c
-        - 'mkdir -p /app && i=0; while true; do echo "$i: $(date)" > /app/date.log; i=$((i+1));sleep 2; done; '
+        - 'mkdir -p /app && i=0; while true; do echo "$i: $(date)" >> /app/date.log; i=$((i+1));sleep 2; done; '
         resources: {}
+        volumeMounts:
+        - name: log-dir
+          mountPath: /app
+      - image: busybox
+        name: log-stream
+        command:
+        - /bin/sh
+        - -c
+        - tail -f /log/date.log;
+        volumeMounts:
+        - name: log-dir
+          mountPath: /log
+      volumes:
+      - name: log-dir
+        emptyDir: {}
 status: {}
