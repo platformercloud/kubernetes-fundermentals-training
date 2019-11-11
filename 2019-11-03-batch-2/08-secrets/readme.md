@@ -1,0 +1,1 @@
+kubectl create secret generic sensitive-data --from-literal name=Nilesh --dry-run -o yaml > sensitive-secret.yaml

@@ -11,7 +11,7 @@ kubectl create cm org-details --from-literal organization=platformer --from-lite
 kubectl apply -f org-cm.yaml 
 
 kubectl get cm
- kubectl get cm org-details  -o yaml
+kubectl get cm org-details  -o yaml
 
  kubectl create cm js-config --from-file config.json --dry-run -o yaml > js-configmap.yaml
 
