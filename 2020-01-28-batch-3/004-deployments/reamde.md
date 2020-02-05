@@ -16,3 +16,6 @@ ACTIVITY
 run nginx as a deployment and expose port 80 3 replicas
 save the yamls
 port forward one of the pods using kubectl
+
+ANSWER
+
