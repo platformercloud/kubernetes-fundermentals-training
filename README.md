@@ -1,4 +1,4 @@
-# Kubernetes Funermentals Training
+# Kubernetes Fundamentals Training
 ![Logo](https://www.pngitem.com/pimgs/m/123-1234691_kubernetes-logo-transparent-hd-png-download.png)
 
 ## Useful Resources
