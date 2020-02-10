@@ -11,10 +11,14 @@ kubectl expose deployment nginx --type ClusterIP --port 80 --target-port 80 --dr
 kubectl get pods --show-labels
 kubectl get pods -L run
 ```
-
+### Kubernetes Get Services
+```
 kubectl get svc
+```
 
+```
 kubectl run -it busybox --restart Never --image busybox:1.27 -n nilesh --rm -- /bin/sh
+```
 
 #### Inside the Pod
 ```
