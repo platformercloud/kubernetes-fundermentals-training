@@ -1,5 +1,5 @@
 # Kubernetes Funermentals Training
-[Logo](https://scontent.fcmb3-1.fna.fbcdn.net/v/t1.0-9/72370761_405940013405670_5374283566643412992_o.jpg)
+![Logo](https://www.pngitem.com/pimgs/m/123-1234691_kubernetes-logo-transparent-hd-png-download.png)
 
 ## Useful Resources
 * [Kubernetes Doc](https://kubernetes.io)
