@@ -17,3 +17,9 @@ kubectl create cm env-example --from-env-file=.env --dry-run -o yaml > env-examp
 
 kubectl explain pod.spec.containers.envFrom
 kubectl explain pod.spec.containers.envFrom.configMapRef
+
+kubectl create cm config-json --from-file=./config.json --dry-run -o yaml > config-json.yaml
+
+kubectl explain pod.spec.volumes
+kubectl explain pod.spec.volumes.configMap 
+kubectl explain pod.spec.containers.volumeMounts

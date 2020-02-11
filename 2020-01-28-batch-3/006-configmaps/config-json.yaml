@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+        "version": "1.0.0",
+        "application": "kuberentes"
+    }
+    // this is a comment
+  app.properties: |-
+    # this is a comment on app.properties
+  organization: Platformer
+  country: Australia
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: config-json

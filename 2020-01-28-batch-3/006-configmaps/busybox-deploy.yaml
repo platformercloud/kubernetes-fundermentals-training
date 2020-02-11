@@ -38,4 +38,12 @@ spec:
         - configMapRef:
             name: org-config
         resources: {}
+        volumeMounts:
+        - name: config # name of the volume that you are mounting
+          mountPath: /app
+      volumes:
+      - name: config
+        configMap:
+          name: config-json
+
 status: {}
