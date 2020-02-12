@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: busybox
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: busybox
+    spec:
+      initContainers:
+      - image: busybox
+        name: init-app-folder
+        command: ["bin/sh", "-c", "mkdir -p /app"]
+        volumeMounts:
+        - name: app-dir
+          mountPath: /app
+      containers:
+      - image: busybox
+        name: hello-app
+        resources: {}
+        command: ["bin/sh", "-c", "echo 'hello-world' > /app/data.log && sleep 3600"]
+        volumeMounts:
+        - name: app-dir
+          mountPath: /app
+      volumes:
+      - name: app-dir
+        emptyDir: {}
+status: {}
