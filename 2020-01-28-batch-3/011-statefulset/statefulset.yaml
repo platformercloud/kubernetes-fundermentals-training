@@ -1,0 +1,55 @@
+# HEADLESS Service
+# MINIMUM REQ: Atleast a headless service
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None # this is what defines a headless service
+  selector:
+    app: nginx
+---
+apiVersion: apps/v1 
+kind: StatefulSet
+metadata:
+  name: web
+  labels:
+    app: nginx
+spec:
+  serviceName: "nginx" # this is not there in deployments
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: example-pvc-template
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: example
+        emptyDir: {}
+  volumeClaimTemplates: # this is not at POD spec level, but at statefulset spec level
+  - metadata:
+      name: example-pvc-template
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: default
